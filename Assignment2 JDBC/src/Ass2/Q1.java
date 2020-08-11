@@ -11,8 +11,7 @@ public class Q1 {
         }
     }
     
-    public static void display(Statement st, String qry) throws Exception{
-        //qry = "SELECT * FROM moviemaster";
+    public static void display(Statement st, String qry) throws Exception{        
         ResultSet rs = st.executeQuery(qry);
         System.out.println("************************Records************************");
         System.out.println("ID\t\tName\t\t\tActor\t\tActress");
