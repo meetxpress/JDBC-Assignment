@@ -10,6 +10,18 @@ public class Q1 {
             System.out.println(ex);
         }
     }
+    
+    public static void display(Statement st, String qry) throws Exception{
+        //qry = "SELECT * FROM moviemaster";
+        ResultSet rs = st.executeQuery(qry);
+        System.out.println("************************Records************************");
+        System.out.println("ID\t\tName\t\t\tActor\t\tActress");
+        while(rs.next()){                        
+            System.out.println("" + rs.getInt("mId") + "\t\t"+rs.getString("mName")+ "\t\t" + rs.getString("mActor") + "\t\t" + rs.getString("mActress"));                        
+        }   
+        System.out.println("**********************************5*********************");
+    }
+    
     public static void main(String[] args)  throws Exception{
         Scanner sc = new Scanner(System.in);          
         while(true){
@@ -51,7 +63,11 @@ public class Q1 {
                 break;
                     
                 case 2:                     
-                    sc.nextLine();
+                    sc.nextLine();                    
+                    qry = "SELECT * FROM moviemaster";
+                    rs = st.executeQuery(qry);
+                    display(st,qry);
+                    
                     System.out.print("Enter Id of the Movie want to Update: ");                   
                     String upSearch = sc.nextLine();                    
                     System.out.print("Enter Name of the Movie: ");                   
@@ -60,7 +76,10 @@ public class Q1 {
                     qry = "UPDATE moviemaster SET mName='"+upName+"' WHERE mId='"+upSearch+"'";
                     rowup = st.executeUpdate(qry);
                     if(rowup > 0){
-                        System.out.println(rowup+" Row Updated.");
+                        System.out.println(rowup+" Row Updated.");                        
+                        qry = "SELECT * FROM moviemaster WHERE mId = '"+upSearch+"'";
+                        rs = st.executeQuery(qry);
+                        display(st,qry);
                     } else {
                         System.out.println("Somethings Went Wrong.");
                     }
@@ -69,6 +88,10 @@ public class Q1 {
                 case 3: 
                     System.out.print("Enter Id of the Movie want to delete: ");                   
                     int delId = sc.nextInt();                    
+
+                    qry = "SELECT * FROM moviemaster";
+                    rs = st.executeQuery(qry);
+                    display(st,qry);
                     
                     qry = "DELETE FROM moviemaster WHERE mId='"+delId+"'";
                     rowup = st.executeUpdate(qry);
@@ -80,26 +103,19 @@ public class Q1 {
                 break;
                 
                 case 4:
-                    sc.nextLine();
-                    
+                    sc.nextLine();                  
                     System.out.print("Enter the movie name you want to display the details: ");
-                    String disName = sc.nextLine();
+                    String disName = sc.nextLine();                    
                     
                     qry = "SELECT * FROM moviemaster WHERE mName = '"+disName+"'";
                     rs = st.executeQuery(qry);
-                    System.out.println("ID\t\tName\t\t\tActor\t\tActress");
-                    while(rs.next()){                        
-                        System.out.println("" + rs.getInt("mId") + "\t\t"+rs.getString("mName")+ "\t\t" + rs.getString("mActor") + "\t\t" + rs.getString("mActress"));                        
-                    }
+                    display(st,qry);
                     break; 
                     
-                case 5: 
+                case 5:                     
                     qry = "SELECT * FROM moviemaster";
                     rs = st.executeQuery(qry);
-                    System.out.println("ID\t\tName\t\t\tActor\t\tActress");
-                    while(rs.next()){                        
-                        System.out.println("" + rs.getInt("mId") + "\t\t"+rs.getString("mName")+ "\t\t" + rs.getString("mActor") + "\t\t" + rs.getString("mActress"));                        
-                    }
+                    display(st,qry);
                     break; 
                     
                 case 6:
