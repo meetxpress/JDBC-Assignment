@@ -19,7 +19,7 @@ public class Q1 {
         while(rs.next()){                        
             System.out.println("" + rs.getInt("mId") + "\t\t"+rs.getString("mName")+ "\t\t" + rs.getString("mActor") + "\t\t" + rs.getString("mActress"));                        
         }   
-        System.out.println("**********************************5*********************");
+        System.out.println("*******************************************************");
     }
     
     public static void main(String[] args)  throws Exception{
