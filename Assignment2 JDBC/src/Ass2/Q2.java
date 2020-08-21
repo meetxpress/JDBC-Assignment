@@ -131,8 +131,7 @@ public class Q2 {
                         System.exit(0);
                         break;
                         
-                    default: System.out.println("Invalid input. Please enter valid input.");
-                        break;
+                    default: System.out.println("Invalid input. Please enter valid input.");                    
                 }
             }
         } catch(Exception ex){
